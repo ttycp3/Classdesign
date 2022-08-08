@@ -1,0 +1,34 @@
+# Project: 课设
+# Makefile created by Red Panda Dev-C++ beta.0.10.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = 课设_private.res
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+CLEANOBJ  =  main.o $(RES)
+LIBS     = 
+INCS     =  
+CXXINCS  =  
+BIN      = 课设.exe
+CXXFLAGS = $(CXXINCS)  -Wall -Wextra -g3 -pipe -D__DEBUG__
+CFLAGS   = $(INCS)  -Wall -Wextra -g3 -pipe -D__DEBUG__
+RM       = del /q /f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(CLEANOBJ) $(BIN) > NUL 2>&1
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp edit.h
+	$(CC) -c E:/桌面/课设/main.cpp -o main.o $(CFLAGS)  -finput-charset=gbk -fexec-charset=gbk
+
+课设_private.res: 课设_private.rc 
+	$(WINDRES) -i 课设_private.rc --input-format=rc -o 课设_private.res -O coff 
+
